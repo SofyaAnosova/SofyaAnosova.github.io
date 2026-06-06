@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    cursor:none;
+}
+
+body {
+    font-family:'Press Start 2P', monospace;
+    background:#000;
+    color:#e92efb;
+    overflow:hidden;
+}
+
+/* 🌆 фон */
+.city {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+        linear-gradient(#000000aa,#000000ee),
+        url('https://img2.akspic.ru/crops/4/6/7/4/6/164764/164764-mir_mechty_gorod_iskusstvo-art-illustracia-cifrovoe_iskusstvo-nauchnaya_fantastika-3840x2160.jpg');
+    background-size:cover;
+    z-index:-1;
+}
+
+/* сетка */
+.grid {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image: linear-gradient(#00f0ff22 1px, transparent 1px),
+                      linear-gradient(90deg,#00f0ff22 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 10s linear infinite;
+    z-index:-1;
+}
+
+@keyframes gridMove {
+    from {transform: translateY(0);}
+    to {transform: translateY(40px);}
+}
+
+/* курсор */
+.cursor {
+    position:fixed;
+    width:35px;
+    height:35px;
+    background:url('https://img.icons8.com/?size=100&id=VXnrZHRXPLmk&format=png&color=000000') center/contain no-repeat;
+    filter:drop-shadow(0 0 20px #440bd4);
+    z-index:9999;
+    pointer-events:none;
+}
+
+/* boot */
+.boot {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    color:#ffea00;
+    padding:40px;
+
+    font-size:18px;
+    line-height:1.8;
+    letter-spacing:1px;
+
+    white-space:pre-wrap;
+
+    text-shadow: none;
+}
+
+
+/* layout */
+.app {
+    display:none;
+    grid-template-columns:220px 1fr;
+    height:100vh;
+}
+
+/* sidebar */
+.sidebar {
+    background:#000000cc;
+    border-right:2px solid #ffea00;
+    padding:20px;
+}
+
+.menu-item {
+    margin-bottom:20px;
+    color:#ffea00;
+    transition:.2s;
+}
+
+.menu-item:hover {
+    color:#ff00c8;
+    transform:translateX(5px);
+}
+
+/* main */
+.main {
+    padding:30px;
+    overflow:auto;
+}
+
+/* title */
+.title {
+    font-size:22px;
+    color:#ffea00;
+    text-shadow:0 0 10px #ffea00;
+}
+
+/* terminal */
+.terminal {
+    border:2px solid #00f0ff;
+    padding:20px;
+    background:#000000cc;
+    margin-top:20px;
+    box-shadow:0 0 20px #00f0ff44;
+}
+
+/* list */
+.pixel-list li {
+    list-style:none;
+    margin:10px 0;
+    padding-left:20px;
+    position:relative;
+}
+
+.pixel-list li::before {
+    content:"■";
+    position:absolute;
+    left:0;
+    color:#ff00c8;
+}
+
+/* contacts */
+.contacts {
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:15px;
+}
+
+.card {
+    border:2px solid #ffea00;
+    padding:15px;
+    background:#000000cc;
+    transition:.3s;
+}
+
+.card:hover {
+    transform:scale(1.05);
+    border-color:#ff00c8;
+}
+
+.card a {
+    color:#00f0ff;
+    text-decoration:none;
+}
+
+/* animation */
+.card, .terminal, .sidebar {
+    animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+    0%,100% {box-shadow:0 0 10px transparent;}
+    50% {box-shadow:0 0 20px #00f0ff22;}
+}
+
+/* mobile */
+@media(max-width:768px){
+    .app {grid-template-columns:1fr;}
+    .sidebar {display:none;}
+}

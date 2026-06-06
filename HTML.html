@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SYSTEM: Sofya</title>
+
+<link rel="stylesheet" href="normalize.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="city"></div>
+<div class="grid"></div>
+<div class="cursor"></div>
+
+<div class="boot" id="boot"></div>
+
+<div class="app" id="app">
+
+<div class="sidebar">
+<div class="menu-item">> about</div>
+<div class="menu-item">> skills</div>
+<div class="menu-item">> contacts</div>
+</div>
+
+<div class="main">
+
+<div class="title">SOFYA ANOSOVA</div>
+
+<br>
+
+<img alt="аватар" src="01.png" height="250px" width="200px">
+
+<div class="terminal">
+<p>> initializing profile...</p>
+<p>> access granted</p>
+
+<br>
+
+<p>> skills:</p>
+
+<ul class="pixel-list">
+<li>супер-мега тестировщик</li>
+<li>неокиберхакер</li>
+<li>видимо, теперь создаю сайты</li>
+<li>дезигнер</li>
+<li>продаван</li>
+</ul>
+</div>
+
+<div class="contacts">
+<div class="card"><a href="https://t.me/banshee_outcry">telegram</a></div>
+<div class="card"><a href="mailto:sofyaanosova@gmail.com">email</a></div>
+<div class="card"><a href="https://vk.ru/id156775977">vk</a></div>
+<div class="card"><a href="https://www.instagram.com/banshee_outcry">instagram</a></div>
+</div>
+
+</div>
+</div>
+
+<script>
+document.addEventListener('mousemove',e=>{
+    document.querySelector('.cursor').style.left=e.pageX+'px';
+    document.querySelector('.cursor').style.top=e.pageY+'px';
+});
+
+const bootText = `
+> breach protocol...
+> decrypting...
+> access granted
+`;
+
+let i=0;
+
+function boot(){
+    if(i<bootText.length){
+        document.getElementById('boot').innerHTML+=bootText[i];
+        i++;
+        setTimeout(boot,30);
+    } else {
+        setTimeout(()=>{
+            document.getElementById('boot').style.display='none';
+            document.getElementById('app').style.display='grid';
+        },300);
+    }
+}
+boot();
+</script>
+
+</body>
+</html>
